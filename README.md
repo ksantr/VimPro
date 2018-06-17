@@ -21,24 +21,25 @@
 * git
 ### Custom commands:
 ##### All modes
-ctrl+s - save 
+* ctrl+s - save 
 ##### Normal mode
-F2 - Paste
-F3 - NERDTree
-F4 - Taglist
-F7 - Run silversearcher(ag)
-ctrl+x - save and exit
-ctrl+q - exit without saving
-ctrl+n - open a new tab
-ctrl+c + ctrl+l - close syntastic window
-wa - copy word to buffer
-wp - replace word with buffer (wa)
-ctrl+p - run Ctrlp (if you installed it)
+* F2 - Paste
+* F3 - NERDTree
+* F4 - Taglist
+* F7 - Run silversearcher(ag)
+* ctrl+x - save and exit
+* ctrl+q - exit without saving
+* ctrl+n - open a new tab
+* ctrl+c + ctrl+l - close syntastic window
+* wa - copy word to buffer
+* wp - replace word with buffer (wa)
+* ctrl+p - run Ctrlp (if you installed it)
 ### Other:
 + Automatically removes trailing whitespaces on save
 + [Toggle auto-indenting for code paste(F2)](http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste)
 ### Vim auto deployment on save
 Automatically upload files to a remote host whenever a change is saved in the Vim
+
 ~/.vimrc:
 ```bash
 autocmd BufWritePost * execute "!if [ $PWD == '/source/folder' ]; then 
