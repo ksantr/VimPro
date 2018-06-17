@@ -32,7 +32,7 @@ fi
 
 echo -e "\n########################################################\n"
  
-echo -e "
+echo -n "
 set t_Co=256
 colorscheme xoria256
 
@@ -155,7 +155,7 @@ autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isT
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'\$#'
 endfunction
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
@@ -179,6 +179,12 @@ echo -e "\n########################################################\n"
 
 echo 'Installing Taglist'
 git clone https://github.com/vim-scripts/taglist.vim.git ~/.vim/bundle/taglist.vim
+echo -e "
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_WinWidth = 30
+map <F4> :TlistToggle<cr>
+let Tlist_Auto_Open = 0
+let Tlist_Exit_OnlyWindow = 1" >> ~/.vimrc
 echo 'Done'
 
 echo -e "\n########################################################\n"
