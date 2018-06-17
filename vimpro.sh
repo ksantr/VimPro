@@ -188,7 +188,7 @@ echo 'Done'
 echo -e "\n########################################################\n"
 
 while [[ "$tagger" != "1" && "$tagger" != "2" ]]; do
-    echo "Install tagger:"
+    echo "Install tagger (type 1 or 2):"
     echo "1. Ctrlp"
     echo "2. FZF (recommended)"
     read tagger; done
@@ -225,7 +225,7 @@ fi
 echo -e "\n########################################################\n"
 
 while [[ "$line" != "1" && "$line" != "2" ]]; do
-    echo "Install status line:"
+    echo "Install status line (type 1 or 2):"
     echo "1. vim-statline"
     echo "2. vim-airline (recommended)"
     read line; done
