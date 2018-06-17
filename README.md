@@ -10,6 +10,9 @@
 * [vim-airline](https://github.com/vim-airline/vim-airline) 
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) 
 ##### You can also choose:
+* [surround](https://tpope.io/vim/surround) 
+* [vim-gitgutter](https://github.com/airblade/vim-gitgutter.git) 
+* [delimitMate](https://github.com/Raimondi/delimitMate.git) 
 * [vim-statline (vim-airline replacement)](https://github.com/millermedeiros/vim-statline) 
 * [Ctrlp (fzf replacement)](https://github.com/ctrlpvim/ctrlp.vim) 
 ### Additional packages:
