@@ -30,8 +30,6 @@ then
         colorscheme xoria256" >> ~/.vimrc
 fi
 
-echo -e "\n########################################################\n"
- 
 echo -n "
 set t_Co=256
 colorscheme xoria256
