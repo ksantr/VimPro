@@ -1,4 +1,4 @@
-# Vim Pro - create a professional IDE from Vim in a minute
+# VimPro - create a professional IDE from Vim in a minute
 ### Plugin manager:
 * [pathogen.vim](https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim)
 ### Basic Plugins list:
