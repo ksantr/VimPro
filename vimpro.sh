@@ -6,10 +6,10 @@ sudo apt-get install -y vim python-dev python3-dev wget git exuberant-ctags
 
 echo -e "\n########################################################\n"
 
-echo "Installing basic vimrc settings\n"
+echo "Installing basic vimrc settings"
 
 while [[ "$xoria" != "y" && "$xoria" != "n" ]]; do
-    echo "Install xoria256 theme? (y/n)\n"
+    echo "Install xoria256 theme? (y/n)"
     read xoria; done
 
 if [[ "$xoria" == "y" ]]
@@ -240,7 +240,7 @@ else
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_theme='lucius'
     let g:airline_section_z = '%p%%  \ue0a1 %l/%L Col:%c'
-    let g:airline_powerline_fonts = 0'
+    let g:airline_powerline_fonts = '0'
     let g:airline_highlighting_cache = 1
     let g:airline#extensions#syntastic#enabled = 0
     let airline#extensions#tabline#tabs_label = ''
