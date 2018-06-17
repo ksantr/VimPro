@@ -23,7 +23,7 @@
 ##### All modes
 * ctrl+s - save 
 ##### Normal mode
-* F2 - Paste
+* F2 - Enable/Disable Paste Mode (auto-indenting)
 * F3 - NERDTree
 * F4 - Taglist
 * F7 - Run silversearcher(ag)
@@ -33,7 +33,6 @@
 * ctrl+c + ctrl+l - close syntastic window
 * wa - copy word to buffer
 * wp - replace word with buffer (wa)
-* ctrl+p - run Ctrlp (if you installed it)
 ### Other:
 + Automatically removes trailing whitespaces on save
 + [Toggle auto-indenting for code paste(F2)](http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste)
