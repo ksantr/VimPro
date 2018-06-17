@@ -1,9 +1,15 @@
 #!/bin/bash
 
-echo -n "Installing basic vimrc settings"
+
+echo 'Installing packages\n'
+sudo apt-get install -y vim python-dev python3-dev wget git exuberant-ctags
+
+echo -e "\n########################################################\n"
+
+echo "Installing basic vimrc settings\n"
 
 while [[ "$xoria" != "y" && "$xoria" != "n" ]]; do
-    echo -n "Install xoria256 theme? (y/n)"
+    echo "Install xoria256 theme? (y/n)\n"
     read xoria; done
 
 if [[ "$xoria" == "y" ]]
@@ -18,7 +24,7 @@ then
         colorscheme xoria256" >> ~/.vimrc
 fi
 
-########################################################
+echo -e "\n########################################################\n"
  
 echo -e "
 set t_Co=256
@@ -87,26 +93,22 @@ noremap <C-S> :w<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 " >> ~/.vimrc
+echo 'Done'
 
-########################################################
+echo -e "\n########################################################\n"
 
-echo -n 'Installing packages'
-sudo apt-get install -y python-dev python3-dev wget git exuberant-ctags
-
-########################################################
-
-echo -n 'Installing pathogen'
+echo 'Installing pathogen'
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     wget https://tpo.pe/pathogen.vim -O ~/.vim/autoload/pathogen.vim
     echo -e "
         execute pathogen#infect()
         syntax on
         filetype plugin indent on" >> ~/.vimrc
-echo -n 'Done'
+echo 'Done'
 
-########################################################
+echo -e "\n########################################################\n"
 
-echo -n 'Installing syntastic'
+echo 'Installing syntastic'
 git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
 echo -e "
     set statusline+=%#warningmsg#
@@ -119,11 +121,11 @@ echo -e "
     let g:syntastic_loc_list_height=5
     let g:syntastic_python_checkers = ['flake8']
     let g:syntastic_python_flake8_args = '--ignore=\"E501,E302,E261,E701,E241,E126,E127,E128,W801,E265,E303\"'" >> ~/.vimrc
-echo -n 'Done'
+echo 'Done'
 
-########################################################
+echo -e "\n########################################################\n"
 
-echo -n 'Installing  YouCompleteMe'
+echo 'Installing  YouCompleteMe'
 cd ~/.vim/bundle/ && git clone https://github.com/Valloric/YouCompleteMe.git && \
     cd YouCompleteMe && git submodule update --init --recursive && ./install.py --clang-completer
 echo -e "
@@ -132,11 +134,11 @@ echo -e "
     set completeopt=menuone,longest,preview
     let g:ycm_auto_trigger = 0
     let g:ycm_autoclose_preview_window_after_completion = 1" >> ~/.vimrc
-echo -n 'Done'
+echo 'Done'
 
-########################################################
+echo -e "\n########################################################\n"
 
-echo -n 'Installing NERDTree'
+echo 'Installing NERDTree'
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 echo -e "
 \" NERDTree config
@@ -165,69 +167,69 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " >> ~/.vimrc
-echo -n 'Done'
+echo 'Done'
 
-########################################################
+echo -e "\n########################################################\n"
 
-echo -n 'Installing Taglist'
+echo 'Installing Taglist'
 git clone https://github.com/vim-scripts/taglist.vim.git ~/.vim/bundle/taglist.vim
-echo -n 'Done'
+echo 'Done'
 
-########################################################
+echo -e "\n########################################################\n"
 
 while [[ "$tagger" != "1" && "$tagger" != "2" ]]; do
-    echo -n "Install tagger:"
-    echo -n "1. Ctrlp"
-    echo -n "2. FZF"
+    echo "Install tagger:"
+    echo "1. Ctrlp"
+    echo "2. FZF (recommended)"
     read tagger; done
 
 if [[ "$tagger" == "1" ]]
 then
-    echo -n 'Install Ctrlp'
+    echo 'Install Ctrlp'
     git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
     echo -e "
     let g:ctrlp_extensions = ['tag']
     nnoremap <C-o> :CtrlPTag<cr>
     set runtimepath^=~/.vim/bundle/ctrlp.vim" >> ~/.vimrc
-    echo -n 'Done'
+    echo 'Done'
 else
-    echo -n 'Install FZF'
+    echo 'Install FZF'
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
     git clone https://github.com/junegunn/fzf.vim.git ~/.vim/bundle/fzf.vim
     echo "set rtp+=~/.fzf" >> ~/.vimrc
-    echo -n 'Done'
+    echo 'Done'
 fi
 
-########################################################
+echo -e "\n########################################################\n"
 
 while [[ "$ag" != "y" && "$ag" != "n" ]]; do
-    echo -n "Install silversearcher-ag? (y/n)"
+    echo "Install silversearcher-ag? (y/n)"
     read ag; done
 if [[ "$ag" == "y" ]]; then
-    echo -n 'Installing silversearcher-ag'
+    echo 'Installing silversearcher-ag'
     sudo apt-get install silversearcher-ag
     echo -e "nnoremap <F7> :Ag <C-R><C-W><CR>" >> ~/.vimrc
-    echo -n 'Done'
+    echo 'Done'
 fi
 
-########################################################
+echo -e "\n########################################################\n"
 
 while [[ "$line" != "1" && "$line" != "2" ]]; do
-    echo -n "Install status line:"
-    echo -n "1. vim-statline (simple)"
-    echo -n "2. vim-airline (complex)"
+    echo "Install status line:"
+    echo "1. vim-statline"
+    echo "2. vim-airline (recommended)"
     read line; done
 
 if [[ "$line" == "1" ]]
 then
-    echo -n 'Installing vim-statline'
+    echo 'Installing vim-statline'
     git clone https://github.com/millermedeiros/vim-statline.git ~/.vim/bundle/vim-statline
-    echo -n 'Done';
+    echo 'Done';
 else
-    echo -n 'Installing vim-airline'
+    echo 'Installing vim-airline'
     git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
     git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/bundle/vim-airline-themes
-    echo -n 'Remember to run :Helptags to generate help tags!'
+    echo 'Remember to run :Helptags to generate help tags!'
     echo -e "
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_theme='lucius'
@@ -239,54 +241,51 @@ else
     let airline#extensions#tabline#show_splits = 0
     let g:airline#extensions#whitespace#checks = []
     let g:airline_detect_spell=0" >> ~/.vimrc
-    echo -n 'Done';
+    echo 'Done';
 fi
 
-echo -n 'Installing vim-fugitive (Git wrapper)'
+echo -e "\n########################################################\n"
+
+echo 'Installing vim-fugitive (Git wrapper)'
 git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 vim -u NONE -c "helptags vim-fugitive/doc" -c q
-echo -n 'Done';
+echo 'Done';
 
-########################################################
+echo -e "\n########################################################\n"
 
 while [[ "$sr" != "y" && "$sr" != "n" ]]; do
-    echo -n "Install surround.vim? (y/n)"
+    echo "Install surround.vim? (y/n)"
     read sr; done
 
 if [[ "$sr" == "y" ]]
 then
-    echo -n 'Installing surround.vim plugin'
+    echo 'Installing surround.vim plugin'
     git clone https://tpope.io/vim/surround.git ~/.vim/bundle/surround
     vim -u NONE -c "helptags surround/doc" -c q
-    echo -n 'Done'
+    echo 'Done'
 fi
 
-########################################################
+echo -e "\n########################################################\n"
 
 while [[ "$gutter" != "y" && "$gutter" != "n" ]]; do
-    echo -n "Install vim-gitgutter? (y/n)"
+    echo "Install vim-gitgutter? (y/n)"
     read gutter; done
 if [[ "$gutter" == "y" ]] 
 then
-    echo -n 'Installing vim-gitgutter plugin'
+    echo 'Installing vim-gitgutter plugin'
     git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter
-    echo -n 'Done'
+    echo 'Done'
 fi
 
-########################################################
+echo -e "\n########################################################\n"
 
 while [[ "$delimitMate" != "y" && "$delimitMate" != "n" ]]; do
-    echo -n "Install delimitMate? (y/n)"
-    echo -e "
-    This plug-in provides automatic closing of quotes, parenthesis, brackets, etc., 
-    besides some other related features that should make your time in insert mode a little bit easier, 
-    like syntax awareness (will not insert the closing delimiter in comments and other configurable regions), 
-    and expansions (off by default), and some more."
+    echo "Install delimitMate? (y/n)"
     read delimitMate; done
 
 if [[ "$delimitMate" == "y" ]]
 then
-    echo -n 'Installing delimitMate plugin'
+    echo 'Installing delimitMate plugin'
     git clone https://github.com/Raimondi/delimitMate.git ~/.vim/bundle/delimitMate
-    echo -n 'Done'
+    echo 'Done'
 fi

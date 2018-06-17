@@ -29,7 +29,7 @@
 * F2 - Enable/Disable Paste Mode (auto-indenting)
 * F3 - NERDTree
 * F4 - Taglist
-* F7 - Run silversearcher(ag)
+* F7 - Run silversearcher (if silversearcher-ag is installed)
 * ctrl+x - save and exit
 * ctrl+q - exit without saving
 * ctrl+n - open a new tab
@@ -38,7 +38,7 @@
 * wp - replace word with buffer (wa)
 ### Other:
 + Automatically removes trailing whitespaces on save
-+ [Toggle auto-indenting for code paste(F2)](http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste)
++ [Toggle auto-indenting for code paste (F2)](http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste)
 ### Vim auto deployment on save
 Automatically upload files to a remote host whenever a change is saved in the Vim
 
