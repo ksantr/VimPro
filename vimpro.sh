@@ -14,11 +14,17 @@ while [[ "$xoria" != "y" && "$xoria" != "n" ]]; do
 
 if [[ "$xoria" == "y" ]]
 then
-    if [[ ! -f ~/.vim/colors ]]
+    if [[ ! -d ~/.vim/colors ]]
     then
         mkdir ~/.vim/colors
-        cp colors/xoria256.ini ~/.vim/colors/
+        cp colors/xoria256.vim ~/.vim/colors/
+    else
+        if [[ ! -f ~/.vim/colors/xoria256.vim ]]
+        then
+            cp ./colors/xoria256.vim ~/.vim/colors/
+        fi
     fi
+
     echo -e "
         set t_Co=256
         colorscheme xoria256" >> ~/.vimrc
