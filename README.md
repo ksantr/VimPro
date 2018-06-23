@@ -49,3 +49,22 @@ autocmd BufWritePost * execute "!if [ $PWD == '/source/folder' ]; then
     --exclude='migrations' --exclude='.env' --exclude='.git' --exclude='.idea' \
     /source/folder root@remotehost.com:/destination/folder;fi"
 ```
+
+### Alternatively we can create a deploy comand to run deploy manually:
+~/.vimrc:
+```bash
+command Deploy execute "!/usr/bin/rsync ..."
+map <F5> :Deploy<CR>
+```
+
+### Highlight right screen block after 81 symbol (conflicts with xoria256 theme)
+```auto
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=236 guibg=#2c2d27
+```
+### Set ripgrep as default fzf file searcher
+
+~/.bashrc:
+```
+export FZF_DEFAULT_COMMAND='rg --files'
+```
