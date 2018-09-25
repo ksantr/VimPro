@@ -2,7 +2,8 @@
 
 
 echo 'Installing packages\n'
-sudo apt-get install -y vim python-dev python3-dev wget git exuberant-ctags
+sudo apt-get install -y vim python-dev python3-dev flake8 wget git exuberant-ctags cmake
+#pip3 install flake8
 
 echo -e "\n########################################################\n"
 
@@ -115,16 +116,16 @@ echo -e "\n########################################################\n"
 echo 'Installing syntastic'
 git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
 echo -e "
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_loc_list_height=5
-    let g:syntastic_python_checkers = ['flake8']
-    let g:syntastic_python_flake8_args = '--ignore=\"E501,E302,E261,E701,E241,E126,E127,E128,W801,E265,E303\"'" >> ~/.vimrc
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=5
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=\"E501,E302,E261,E701,E241,E126,E127,E128,W801,E265,E303\"'" >> ~/.vimrc
 echo 'Done'
 
 echo -e "\n########################################################\n"
