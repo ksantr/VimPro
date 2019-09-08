@@ -18,7 +18,7 @@ then
     if [[ ! -d ~/.vim/colors ]]
     then
         mkdir ~/.vim/colors
-        cp colors/xoria256.vim ~/.vim/colors/
+        cp ./colors/xoria256.vim ~/.vim/colors/
     else
         if [[ ! -f ~/.vim/colors/xoria256.vim ]]
         then
@@ -66,12 +66,6 @@ au BufWritePre *.py call TrimEndLines()
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 
-augroup AutoSaveFolds
-  autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent loadview
-  augroup END
-
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
             
@@ -105,10 +99,10 @@ echo -e "\n########################################################\n"
 echo 'Installing pathogen'
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     wget https://tpo.pe/pathogen.vim -O ~/.vim/autoload/pathogen.vim
-    echo -e "
-        execute pathogen#infect()
-        syntax on
-        filetype plugin indent on" >> ~/.vimrc
+echo -e "
+execute pathogen#infect()
+syntax on
+filetype plugin indent on" >> ~/.vimrc
 echo 'Done'
 
 echo -e "\n########################################################\n"
@@ -134,11 +128,11 @@ echo 'Installing  YouCompleteMe'
 cd ~/.vim/bundle/ && git clone https://github.com/Valloric/YouCompleteMe.git && \
     cd YouCompleteMe && git submodule update --init --recursive && ./install.py --clang-completer
 echo -e "
-    au FileType python set omnifunc=pythoncomplete#Complete
-    let g:SuperTabDefaultCompletionType = 'context'
-    set completeopt=menuone,longest,preview
-    let g:ycm_auto_trigger = 0
-    let g:ycm_autoclose_preview_window_after_completion = 1" >> ~/.vimrc
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = 'context'
+set completeopt=menuone,longest,preview
+let g:ycm_auto_trigger = 0
+let g:ycm_autoclose_preview_window_after_completion = 1" >> ~/.vimrc
 echo 'Done'
 
 echo -e "\n########################################################\n"
@@ -199,15 +193,15 @@ then
     echo 'Install Ctrlp'
     git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
     echo -e "
-    let g:ctrlp_extensions = ['tag']
-    nnoremap <C-o> :CtrlPTag<cr>
-    set runtimepath^=~/.vim/bundle/ctrlp.vim" >> ~/.vimrc
+let g:ctrlp_extensions = ['tag']
+nnoremap <C-o> :CtrlPTag<cr>
+set runtimepath^=~/.vim/bundle/ctrlp.vim" >> ~/.vimrc
     echo 'Done'
 else
     echo 'Install FZF'
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
     git clone https://github.com/junegunn/fzf.vim.git ~/.vim/bundle/fzf.vim
-    echo "set rtp+=~/.fzf" >> ~/.vimrc
+echo "set rtp+=~/.fzf" >> ~/.vimrc
     echo 'Done'
 fi
 
@@ -251,6 +245,7 @@ else
     let airline#extensions#tabline#tabs_label = ''
     let airline#extensions#tabline#show_splits = 0
     let g:airline#extensions#whitespace#checks = []
+    let g:airline#extensions#tabline#tab_nr_type = 1
     let g:airline_detect_spell=0" >> ~/.vimrc
     echo 'Done';
 fi
